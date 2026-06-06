@@ -1,0 +1,8 @@
+.venv/
+.tmp/
+__pycache__/
+*.py[cod]
+logs/*.log
+data/raw/*.csv
+!data/raw/.gitkeep
+models/*.pkl

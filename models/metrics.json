@@ -1,0 +1,201 @@
+{
+  "selected_model": "Decision Tree",
+  "accuracy": 0.75,
+  "precision": 1.0,
+  "recall": 0.5,
+  "f1": 0.6667,
+  "roc_auc": 0.75,
+  "confusion_matrix": [
+    [
+      4,
+      0
+    ],
+    [
+      2,
+      2
+    ]
+  ],
+  "leaderboard": [
+    {
+      "model": "Decision Tree",
+      "accuracy": 0.75,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "roc_auc": 0.75,
+      "confusion_matrix": [
+        [
+          4,
+          0
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "model": "Naive Bayes",
+      "accuracy": 0.625,
+      "precision": 0.6,
+      "recall": 0.75,
+      "f1": 0.6667,
+      "roc_auc": 0.625,
+      "confusion_matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.625,
+      "precision": 0.6667,
+      "recall": 0.5,
+      "f1": 0.5714,
+      "roc_auc": 0.5625,
+      "confusion_matrix": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "model": "Linear SVM",
+      "accuracy": 0.625,
+      "precision": 0.6667,
+      "recall": 0.5,
+      "f1": 0.5714,
+      "roc_auc": 0.625,
+      "confusion_matrix": [
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.625,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    }
+  ],
+  "dataset_size": 24,
+  "train_size": 16,
+  "test_size": 8,
+  "class_distribution": {
+    "real": 12,
+    "fake": 12
+  },
+  "trained_at": "2026-06-06T13:49:47+00:00",
+  "dataset_file": "active_dataset.csv",
+  "feature_importance": [
+    {
+      "feature": "sentiment_polarity",
+      "importance": 0.777778
+    },
+    {
+      "feature": "predict stock",
+      "importance": 0.222222
+    },
+    {
+      "feature": "article_length",
+      "importance": 0.0
+    },
+    {
+      "feature": "average_word_length",
+      "importance": 0.0
+    },
+    {
+      "feature": "sensational_keyword_count",
+      "importance": 0.0
+    },
+    {
+      "feature": "question_mark_count",
+      "importance": 0.0
+    },
+    {
+      "feature": "exclamation_count",
+      "importance": 0.0
+    },
+    {
+      "feature": "capital_letter_ratio",
+      "importance": 0.0
+    },
+    {
+      "feature": "subjectivity",
+      "importance": 0.0
+    },
+    {
+      "feature": "year construction",
+      "importance": 0.0
+    },
+    {
+      "feature": "year analyst",
+      "importance": 0.0
+    },
+    {
+      "feature": "year",
+      "importance": 0.0
+    },
+    {
+      "feature": "world leader",
+      "importance": 0.0
+    },
+    {
+      "feature": "world",
+      "importance": 0.0
+    },
+    {
+      "feature": "witness unnam",
+      "importance": 0.0
+    },
+    {
+      "feature": "witness",
+      "importance": 0.0
+    },
+    {
+      "feature": "wing monday",
+      "importance": 0.0
+    },
+    {
+      "feature": "wing city",
+      "importance": 0.0
+    },
+    {
+      "feature": "wing",
+      "importance": 0.0
+    },
+    {
+      "feature": "weird trick",
+      "importance": 0.0
+    }
+  ]
+}

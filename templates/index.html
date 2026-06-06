@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}AI Detector{% endblock %}
+{% block page_name %}AI Detector{% endblock %}
+{% block content %}
+<section class="detector-hero">
+  <div class="hero-copy">
+    <span class="hero-kicker"><i data-lucide="shield-check"></i> Evidence-aware content screening</span>
+    <h1>Detect misinformation <span>before it spreads.</span></h1>
+    <p>Analyze news language with sentiment-enhanced NLP and an automatically selected machine learning model.</p>
+  </div>
+  <div class="hero-signal" aria-hidden="true">
+    <div class="signal-core"><i data-lucide="scan-text"></i></div>
+    <span class="signal-line line-one"></span>
+    <span class="signal-line line-two"></span>
+    <span class="signal-line line-three"></span>
+  </div>
+</section>
+
+<section class="stats-grid" id="homeStats">
+  <article class="stat-card"><span class="stat-icon purple"><i data-lucide="brain-circuit"></i></span><div><small>Current model</small><strong id="statModel">Loading</strong></div></article>
+  <article class="stat-card"><span class="stat-icon green"><i data-lucide="badge-check"></i></span><div><small>Validation accuracy</small><strong id="statAccuracy">--</strong></div></article>
+  <article class="stat-card"><span class="stat-icon cyan"><i data-lucide="activity"></i></span><div><small>F1 score</small><strong id="statF1">--</strong></div></article>
+  <article class="stat-card"><span class="stat-icon amber"><i data-lucide="scan-search"></i></span><div><small>Total predictions</small><strong id="statPredictions">0</strong></div></article>
+</section>
+
+<section class="detector-workspace">
+  <div class="detector-form">
+    <div class="section-heading">
+      <div><span class="eyebrow">Live inference</span><h2>Analyze an article</h2></div>
+      <button class="btn btn-subtle" id="exampleButton"><i data-lucide="wand-sparkles"></i> Use example</button>
+    </div>
+    <form id="predictionForm">
+      <div class="mb-3">
+        <label class="form-label" for="headline">Headline</label>
+        <input class="form-control" id="headline" maxlength="500" placeholder="Enter the article headline">
+      </div>
+      <div class="mb-3">
+        <div class="d-flex justify-content-between">
+          <label class="form-label" for="content">Article content</label>
+          <span class="field-counter" id="contentCounter">0 / 50,000</span>
+        </div>
+        <textarea class="form-control article-input" id="content" maxlength="50000" placeholder="Paste the full article or claim here..." required></textarea>
+      </div>
+      <div class="form-actions">
+        <span><i data-lucide="lock-keyhole"></i> Text is processed locally</span>
+        <button class="btn btn-primary btn-lg" type="submit" id="analyzeButton">
+          <i data-lucide="scan-search"></i> Analyze credibility
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <aside class="prediction-result empty" id="predictionResult">
+    <div class="empty-state" id="resultEmpty">
+      <span><i data-lucide="radar"></i></span>
+      <h3>Ready to analyze</h3>
+      <p>Your credibility score, confidence, and language signals will appear here.</p>
+    </div>
+    <div class="result-content d-none" id="resultContent">
+      <div class="result-topline"><span id="resultStatus">Analysis complete</span><small id="resultModel"></small></div>
+      <div class="verdict-row">
+        <div><small>Model verdict</small><h2 id="verdictLabel">REAL NEWS</h2></div>
+        <span class="verdict-icon" id="verdictIcon"><i data-lucide="shield-check"></i></span>
+      </div>
+      <div class="probability-gauge">
+        <div class="gauge-track"><div class="gauge-fill" id="gaugeFill"></div></div>
+        <div class="gauge-labels"><span>Low risk</span><strong id="riskScore">0%</strong><span>High risk</span></div>
+      </div>
+      <div class="confidence-section">
+        <div class="circular-progress" id="confidenceCircle" style="--progress: 0">
+          <div><strong id="confidenceValue">0%</strong><span>Confidence</span></div>
+        </div>
+        <p id="resultSummary">The model is evaluating the language patterns in this article.</p>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section class="analysis-panel d-none" id="analysisPanel">
+  <div class="section-heading">
+    <div><span class="eyebrow">Explainable AI</span><h2>Why the model decided</h2></div>
+    <span class="method-badge" id="explanationMethod">Local feature contribution</span>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-block positive-block"><h3><i data-lucide="triangle-alert"></i> Fake-news indicators</h3><div class="indicator-list" id="positiveIndicators"></div></div>
+    <div class="insight-block negative-block"><h3><i data-lucide="shield-check"></i> Reliability indicators</h3><div class="indicator-list" id="negativeIndicators"></div></div>
+    <div class="article-metrics">
+      <div><small>Words</small><strong id="wordCount">0</strong></div>
+      <div><small>Sentiment</small><strong id="sentimentScore">0.00</strong></div>
+      <div><small>Subjectivity</small><strong id="subjectivityScore">0%</strong></div>
+      <div><small>Readability</small><strong id="readabilityScore">0</strong></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/detector.js') }}"></script>{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Dataset & Training{% endblock %}
+{% block page_name %}Dataset & Training{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <div><span class="eyebrow">Model operations</span><h1>Train on your dataset</h1><p>Validate a Kaggle-style CSV, benchmark every classifier, and promote the best model automatically.</p></div>
+</section>
+
+<section class="upload-layout">
+  <div class="surface upload-surface">
+    <div class="surface-heading"><div><span class="eyebrow">CSV ingestion</span><h2>Upload training data</h2></div><span class="limit-badge">Maximum 10 MB</span></div>
+    <label class="drop-zone" id="dropZone" for="datasetFile">
+      <input type="file" id="datasetFile" accept=".csv,text/csv">
+      <span class="upload-icon"><i data-lucide="file-up"></i></span>
+      <h3>Drop your CSV here</h3>
+      <p>or click to browse from your computer</p>
+      <button class="btn btn-subtle" type="button">Choose CSV</button>
+    </label>
+    <div class="selected-file d-none" id="selectedFile">
+      <span><i data-lucide="file-spreadsheet"></i></span>
+      <div><strong id="fileName"></strong><small id="fileSize"></small></div>
+      <button class="icon-button" id="removeFile" aria-label="Remove selected file"><i data-lucide="x"></i></button>
+    </div>
+    <button class="btn btn-primary btn-lg w-100 mt-3" id="uploadTrainButton" disabled><i data-lucide="brain-circuit"></i> Validate and train models</button>
+  </div>
+
+  <aside class="surface schema-surface">
+    <span class="eyebrow">Expected schema</span>
+    <h2>Dataset requirements</h2>
+    <div class="schema-list">
+      <div><span class="required">Required</span><strong>label</strong><small>real/fake, true/false, or 0/1</small></div>
+      <div><span class="required">Required</span><strong>text or content</strong><small>Article body used for NLP features</small></div>
+      <div><span class="optional">Optional</span><strong>title</strong><small>Headline combined with article content</small></div>
+    </div>
+    <div class="validation-note"><i data-lucide="shield-check"></i><p>Files are checked for type, schema, empty values, duplicates, label balance, and minimum sample size before training.</p></div>
+  </aside>
+</section>
+
+<section class="training-progress d-none" id="trainingProgress">
+  <div class="progress-step active"><span>1</span><div><strong>Validating CSV</strong><small>Checking schema and labels</small></div></div>
+  <div class="progress-line"></div>
+  <div class="progress-step"><span>2</span><div><strong>Engineering features</strong><small>TF-IDF and language signals</small></div></div>
+  <div class="progress-line"></div>
+  <div class="progress-step"><span>3</span><div><strong>Comparing models</strong><small>Ranking by validation F1</small></div></div>
+  <div class="progress-line"></div>
+  <div class="progress-step"><span>4</span><div><strong>Publishing reports</strong><small>Saving artifacts and charts</small></div></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/upload.js') }}"></script>{% endblock %}

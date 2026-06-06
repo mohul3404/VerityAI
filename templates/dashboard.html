@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Model Analytics{% endblock %}
+{% block page_name %}Model Analytics{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <div><span class="eyebrow">Evaluation workspace</span><h1>Model performance</h1><p>Compare validation results, inspect class errors, and explore the active dataset.</p></div>
+  <button class="btn btn-primary" id="retrainButton"><i data-lucide="refresh-cw"></i> Retrain models</button>
+</section>
+
+<section class="stats-grid compact">
+  <article class="stat-card"><span class="stat-icon purple"><i data-lucide="trophy"></i></span><div><small>Selected model</small><strong id="selectedModel">--</strong></div></article>
+  <article class="stat-card"><span class="stat-icon green"><i data-lucide="target"></i></span><div><small>Precision</small><strong id="precisionMetric">--</strong></div></article>
+  <article class="stat-card"><span class="stat-icon cyan"><i data-lucide="radio-tower"></i></span><div><small>Recall</small><strong id="recallMetric">--</strong></div></article>
+  <article class="stat-card"><span class="stat-icon amber"><i data-lucide="database"></i></span><div><small>Dataset size</small><strong id="datasetSize">--</strong></div></article>
+</section>
+
+<section class="analytics-grid">
+  <article class="surface chart-surface">
+    <div class="surface-heading"><div><span class="eyebrow">Benchmark</span><h2>Classifier comparison</h2></div><select id="metricSelector" class="form-select form-select-sm"><option value="accuracy">Accuracy</option><option value="f1" selected>F1 score</option><option value="precision">Precision</option><option value="recall">Recall</option></select></div>
+    <div class="chart-wrap"><canvas id="comparisonChart"></canvas></div>
+  </article>
+  <article class="surface">
+    <div class="surface-heading"><div><span class="eyebrow">Error analysis</span><h2>Confusion matrix</h2></div><span class="live-pill">Validation set</span></div>
+    <div class="matrix-grid" id="matrixGrid">
+      <span></span><strong>Pred. real</strong><strong>Pred. fake</strong>
+      <strong>Actual real</strong><div id="trueReal">--</div><div id="falseFake">--</div>
+      <strong>Actual fake</strong><div id="falseReal">--</div><div id="trueFake">--</div>
+    </div>
+  </article>
+</section>
+
+<section class="surface dataset-surface">
+  <div class="surface-heading dataset-heading">
+    <div><span class="eyebrow">Active training data</span><h2>Dataset explorer</h2></div>
+    <div class="dataset-controls">
+      <div class="search-input"><i data-lucide="search"></i><input id="datasetSearch" placeholder="Search articles"></div>
+      <select id="datasetSort" class="form-select form-select-sm"><option value="title">Sort by title</option><option value="label">Sort by label</option><option value="text">Sort by content</option></select>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table dataset-table">
+      <thead><tr><th>Title</th><th>Article preview</th><th>Label</th></tr></thead>
+      <tbody id="datasetBody"></tbody>
+    </table>
+  </div>
+  <div class="pagination-bar"><span id="datasetSummary">Loading dataset...</span><div><button class="icon-button" id="prevPage" aria-label="Previous page"><i data-lucide="chevron-left"></i></button><span id="pageIndicator">1 / 1</span><button class="icon-button" id="nextPage" aria-label="Next page"><i data-lucide="chevron-right"></i></button></div></div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

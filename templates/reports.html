@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block page_name %}Reports{% endblock %}
+{% block content %}
+<section class="page-intro">
+  <div><span class="eyebrow">Reproducible evaluation</span><h1>Training reports</h1><p>Review generated artifacts or download them for your presentation, portfolio, and technical documentation.</p></div>
+  <a class="btn btn-primary" href="/downloads/training-report"><i data-lucide="download"></i> Download PDF report</a>
+</section>
+
+<section class="report-downloads">
+  <a class="download-card" href="/downloads/metrics"><span class="stat-icon purple"><i data-lucide="braces"></i></span><div><strong>Metrics JSON</strong><small>Complete machine-readable benchmark</small></div><i data-lucide="download"></i></a>
+  <a class="download-card" href="/downloads/confusion-matrix"><span class="stat-icon cyan"><i data-lucide="grid-2x2"></i></span><div><strong>Confusion matrix</strong><small>Validation error distribution</small></div><i data-lucide="download"></i></a>
+  <a class="download-card" href="/downloads/feature-importance"><span class="stat-icon amber"><i data-lucide="list-filter"></i></span><div><strong>Feature importance</strong><small>Top language signals</small></div><i data-lucide="download"></i></a>
+</section>
+
+<section class="reports-grid">
+  <article class="surface report-visual"><div class="surface-heading"><div><span class="eyebrow">Classification errors</span><h2>Confusion matrix</h2></div><a href="/downloads/confusion-matrix" aria-label="Download confusion matrix"><i data-lucide="download"></i></a></div><img src="/reports/confusion_matrix.png" alt="Generated confusion matrix"></article>
+  <article class="surface report-visual"><div class="surface-heading"><div><span class="eyebrow">Discrimination</span><h2>ROC curve</h2></div><a href="/downloads/roc-curve" aria-label="Download ROC curve"><i data-lucide="download"></i></a></div><img src="/reports/roc_curve.png" alt="Generated ROC curve"></article>
+  <article class="surface report-visual wide"><div class="surface-heading"><div><span class="eyebrow">Explainability</span><h2>Feature importance</h2></div><a href="/downloads/feature-importance" aria-label="Download feature importance"><i data-lucide="download"></i></a></div><img src="/reports/feature_importance.png" alt="Generated feature importance chart"></article>
+</section>
+{% endblock %}
